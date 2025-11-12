@@ -3,42 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal File Cleaner</title>
+  <title>Data File Cleaner</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient(135deg, #0077b6, #00b4d8);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: none;
-      border-radius: 1rem;
-      padding: 2rem;
-      width: 100%;
-      max-width: 500px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    input[type="file"] {
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="card text-center">
-    <h1 class="mb-4">🧹 Web Cleaner</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <div class="mb-3">
-        <input class="form-control" type="file" name="file" required>
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <h1 class="display-4 fw-bold">🧹 Data File Cleaner</h1>
+      <p class="lead mt-2">Clean and process all file types, primarily designed for data workers.</p>
+    </div>
+
+    <div class="card shadow-sm p-4 mb-4">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <input class="form-control" type="file" name="file" required>
+        </div>
+        <button class="btn btn-primary w-100 btn-lg" type="submit">Clean File</button>
+      </form>
+    </div>
+
+    {% if cleaned_files %}
+      <div class="card shadow-sm p-4 mb-4">
+        <h4>Download Cleaned Files:</h4>
+        <ul class="list-group mt-3">
+          {% for file in cleaned_files %}
+            <li class="list-group-item">
+              <a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
-      <button class="btn btn-light btn-lg w-100" type="submit">Clean File</button>
-    </form>
+    {% endif %}
+
+    <footer class="text-center text-muted mt-5">
+      <p>Upgrade to Pro for batch uploads, Google Sheets integration, and ad-free experience.</p>
+    </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,0 +1,32 @@
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #fff;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+input[type="file"] {
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #ff7f50;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #ff5722;
+}
