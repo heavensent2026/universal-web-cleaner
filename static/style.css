@@ -30,3 +30,10 @@ input[type="file"] {
 .btn-primary:hover {
     background-color: #ff5722;
 }
+
+/* Upgrade to Pro text styling */
+footer p {
+    color: #ffd700;   /* Gold/yellow color to stand out */
+    font-size: 1.1rem; /* Slightly bigger text */
+    font-weight: 600;
+}
